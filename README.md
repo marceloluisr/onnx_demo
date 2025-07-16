@@ -53,7 +53,11 @@ adb shell ls -l /data/local/tmp/
 
 2) Remover os arquivos com o seguinte comando, por exemplo
 
-adb shell rm /data/local/tmp/YOUR_MODEL.pte
+adb shell rm /data/local/tmp/YOUR_MODEL.onnx
+
+ou para remover todos os modelos
+
+adb shell rm /data/local/tmp/*.onnx
 
 
 
