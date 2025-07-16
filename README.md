@@ -1,4 +1,4 @@
-# executorch_demo
+# onnx_demo
 
 > Conectar USB com Depurador USB ativado no modo desenvolvedor
 
