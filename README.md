@@ -1,5 +1,10 @@
 # onnx_demo
 
+# Requerimentos
+.
+- JAVA OpenJDK 17 instalado e variável JAVA_HOME configurada apropridamente em gradle.properties
+- Android SDK instalado e caminho de deretório no arquivo local.properties. Se não existir, então crie um local.properties na pasta do projeto
+  
 > Conectar USB com Depurador USB ativado no modo desenvolvedor
 
 > Connectar adb device
