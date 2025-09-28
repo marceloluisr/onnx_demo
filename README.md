@@ -64,5 +64,7 @@ ou para remover todos os modelos
 
 adb shell rm /data/local/tmp/*.onnx
 
+# Reconhecimento
 
+https://github.com/xuebinqin/U-2-Net
 
