@@ -64,6 +64,47 @@ ou para remover todos os modelos
 
 adb shell rm /data/local/tmp/*.onnx
 
+# Exemplo de conversão
+Recomendação: **precisar carregar os pesos do modelo com `load_state_dict()` antes de exportar para ONNX**, caso contrário o modelo estará com pesos aleatórios (não treinado).
+```python
+import torch
+import torch.onnx
+
+# Cria o modelo
+model = U2NET()
+
+# Carrega os pesos treinados
+model.load_state_dict(torch.load("u2net.pth", map_location='cpu'))  # ajuste o caminho se necessário
+
+# Define o modo de avaliação
+model.eval()
+
+# Entrada dummy
+dummy_input = torch.randn(1, 3, 224, 224)
+
+# Exporta para ONNX
+torch.onnx.export(
+    model,
+    dummy_input,
+    "u2net.onnx",
+    export_params=True,
+    opset_version=11,
+    do_constant_folding=True,
+    input_names=['input'],
+    output_names=['out1', 'out2', 'out3', 'out4', 'out5', 'out6'],
+    dynamic_axes={
+        'input': {0: 'batch_size'},
+        'out1': {0: 'batch_size'},
+        'out2': {0: 'batch_size'},
+        'out3': {0: 'batch_size'},
+        'out4': {0: 'batch_size'},
+        'out5': {0: 'batch_size'},
+        'out6': {0: 'batch_size'},
+    }
+)
+print(" Modelo ONNX exportado com sucesso!")
+```
+
 # Reconhecimento
 
 https://github.com/xuebinqin/U-2-Net
